@@ -27,6 +27,9 @@ services:
       - POSTGRES_DB=${POSTGRES_DB:-accountingdb}
       - POSTGRES_USER=${POSTGRES_USER:-accounting}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?Database password must be set via POSTGRES_PASSWORD environment variable}
+      # postgres:18+ images expect a version-specific subdirectory rather than
+      # data written directly at the mount point (docker-library/postgres#1259)
+      - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - ${POSTGRES_PORT:-12345}:5432
     volumes:

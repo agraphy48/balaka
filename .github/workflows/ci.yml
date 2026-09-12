@@ -36,7 +36,7 @@ jobs:
         run: gitleaks detect --source . --verbose --redact --exit-code 1
 
       - name: TruffleHog Scan
-        uses: trufflesecurity/trufflehog@main
+        uses: trufflesecurity/trufflehog@363923b901c911a9164f50b6c423f47c15372b1c # v3.97.4
         with:
           extra_args: --only-verified
 
